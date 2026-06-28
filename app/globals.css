@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Brand theme tokens.
+ * Change the hex values below to retheme the entire site.
+ * Semantic token names stay stable; components reference them.
+ */
+@theme {
+  /* Brand colors -- change these to retheme the entire site */
+  --color-primary: #2d5a4f;
+  --color-primary-hover: #1f4039;
+  --color-secondary: #c97b5a;
+  --color-secondary-hover: #b5674a;
+  --color-accent: #e0a44a;
+  --color-accent-hover: #c98e3a;
+
+  /* Surfaces */
+  --color-background: #faf8f3;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f3efe8;
+
+  /* Text */
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b7280;
+
+  /* Borders & status */
+  --color-border: #e5e0d8;
+  --color-success: #3a7d44;
+  --color-warning: #d97706;
+  --color-danger: #c0392b;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/*
+ * shadcn token bridge.
+ * Registers the remaining shadcn color utilities (primary-foreground, card,
+ * popover, muted, etc.) so classes like `text-primary-foreground` and
+ * `bg-card` resolve. Values point to the :root variables mapped below.
+ */
+@theme inline {
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * Map shadcn variable names to our semantic brand tokens.
+ * shadcn components reference these; they reference the @theme values above.
+ */
+:root {
+  --background: var(--color-background);
+  --foreground: var(--color-text);
+  --card: var(--color-surface);
+  --card-foreground: var(--color-text);
+  --popover: var(--color-surface);
+  --popover-foreground: var(--color-text);
+  --primary: var(--color-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-secondary);
+  --secondary-foreground: #ffffff;
+  --muted: var(--color-surface-muted);
+  --muted-foreground: var(--color-text-muted);
+  --accent: var(--color-accent);
+  --accent-foreground: var(--color-text);
+  --destructive: var(--color-danger);
+  --border: var(--color-border);
+  --input: var(--color-border);
+  --ring: var(--color-primary);
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
